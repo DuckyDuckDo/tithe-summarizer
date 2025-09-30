@@ -29,10 +29,8 @@ if uploaded_file:
 
     with tab1:
         st.subheader("Contributions by Person")
-        selected_year = int(st.selectbox("Select Year", sorted(df["Year"].unique())))
         person_summary = (
-            df[df["Year"] == selected_year]
-            .groupby("Name")["Amount"].sum().reset_index()
+            df.groupby("Name")["Amount"].sum().reset_index()
         )
         st.dataframe(person_summary)
 
